@@ -21,7 +21,7 @@
 #
 
 if test `grep --count asihpi /proc/modules` -eq 0 ; then
-    dkms build -m asihpi -v @ASIHPI_VERSION@
-    dkms install -m asihpi -v @ASIHPI_VERSION@
+    dkms build asihpi @ASIHPI_VERSION@
+    dkms install asihpi @ASIHPI_VERSION@
     modprobe asihpi
 fi
