@@ -1,3 +1,9 @@
+hpklinux (4.20.44-1) stable; urgency=medium
+
+  * Updated for upstream 4.20.44.
+
+ -- Fred Gleason <fredg@paravelsystems.com>  Fri,19 July 2024 14:20:00 -0400
+
 hpklinux (4.20.43-1) stable; urgency=medium
 
   * Updated for upstream 4.20.43.
