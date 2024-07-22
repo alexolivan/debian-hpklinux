@@ -48,3 +48,5 @@
 	the 'postinst' and 'prerm' package scripts.
 2024-07-19 Fred Gleason <fredg@paravelsystems.com>
 	* Incremented the package version to v4.20.44-2.
+2024-07-22 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to v4.20.44-5.

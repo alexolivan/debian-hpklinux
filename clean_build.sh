@@ -7,4 +7,5 @@ rm -rf hpklinux_$ASIHPI_VERSION
 rm -f debian/control
 rm -f debian/load_asihpi.sh
 rm -f debian/prerm
+rm -f debian/postinst
 rm -f debian/rules

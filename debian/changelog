@@ -1,3 +1,10 @@
+hpklinux (4.20.44-5) stable; urgency=medium
+
+  * Restored dkms(8) switches.
+  * Refactored the 'postinst' script.
+
+ -- Fred Gleason <fredg@paravelsystems.com>  Mon,22 July 2024 09:34:00 -0400
+
 hpklinux (4.20.44-2) stable; urgency=medium
 
   * Tweaked dkms(8) switches.
