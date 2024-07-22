@@ -1,1 +1,13 @@
+*.buildinfo
+*.changes
+*.deb
+*.ddeb
+*.dsc
+*.tar.gz
+*.tar.xz
 debian/control
+debian/load_asihpi.sh
+debian/postinst
+debian/prerm
+debian/rules
+hpklinux_*
