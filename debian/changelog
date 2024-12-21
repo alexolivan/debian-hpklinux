@@ -1,3 +1,9 @@
+hpklinux (4.20.46-1) stable; urgency=medium
+
+  * Updated for 4.20.46.
+
+ -- Fred Gleason <fredg@paravelsystems.com>  Mon,22 July 2024 09:34:00 -0400
+
 hpklinux (4.20.44-5) stable; urgency=medium
 
   * Restored dkms(8) switches.

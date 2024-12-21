@@ -3,11 +3,11 @@
 *.deb
 *.ddeb
 *.dsc
-*.tar.gz
 *.tar.xz
 debian/control
 debian/load_asihpi.sh
 debian/postinst
 debian/prerm
 debian/rules
-hpklinux_*
+hpklinux_4.20.46.orig.tar.gz
+hpklinux_4.20.46/
