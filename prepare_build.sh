@@ -18,7 +18,9 @@ chmod 755 debian/prerm
 rm debian/prerm.src2
 sed s/@ASIHPI_VERSION@/$ASIHPI_VERSION/ < debian/postinst.src > debian/postinst.src2
 sed s/@ASIHPI_MAJOR_VERSION@/$ASIHPI_MAJOR_VERSION/ < debian/postinst.src2 > debian/postinst
+sed -i "1s/hpklinux (.*)/hpklinux ($ASIHPI_PKG_VERSION)/" debian/changelog
 chmod 755 debian/postinst
 rm debian/postinst.src2
+sed -i "1s/hpklinux (.*)/hpklinux ($ASIHPI_PKG_VERSION)/" debian/changelog
 cp -a debian hpklinux_$ASIHPI_VERSION/
 tar -zvcf hpklinux_$ASIHPI_VERSION.orig.tar.gz hpklinux_$ASIHPI_VERSION

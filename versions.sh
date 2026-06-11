@@ -4,6 +4,6 @@
 # When incrementing versions, be sure to create a new entry in
 # 'debian/changelog'!
 #
-ASIHPI_PKG_VERSION=4.20.46-1
-ASIHPI_VERSION=4.20.46
+ASIHPI_PKG_VERSION=4.20.54-1
+ASIHPI_VERSION=4.20.54
 ASIHPI_MAJOR_VERSION=4.20

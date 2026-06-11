@@ -4,7 +4,7 @@ build:
 	make -C hpi-lib
 	make -C hpi-cli-apps
 
-binary:	
+binary:	build
 	dh_testroot
 	dh_prep
 
