@@ -4,8 +4,17 @@
 case "$1" in
     configure)
 	ldconfig
+
+	# Driver HPI Nativo
+	dkms add -m asihpi -v @ASIHPI_VERSION@
 	dkms build -m asihpi -v @ASIHPI_VERSION@
 	dkms install -m asihpi -v @ASIHPI_VERSION@
+
+	# Driver ALSA
+	dkms add -m snd-asihpi -v @ASIHPI_VERSION@
+	dkms build -m snd-asihpi -v @ASIHPI_VERSION@
+	dkms install -m snd-asihpi -v @ASIHPI_VERSION@
+
 	/bin/systemctl daemon-reload
 	;;
 

@@ -44,8 +44,10 @@ binary:	build
 	cp debian/load_asihpi.sh debian/hpklinux/usr/sbin/
 	mkdir -p debian/hpklinux/usr/src/asihpi-@ASIHPI_VERSION@
 	cp -a hpi-drv/* debian/hpklinux/usr/src/asihpi-@ASIHPI_VERSION@/
-	mkdir -p debian/hpklinux/etc/modprobe.d
-	echo "blacklist snd-asihpi" > debian/hpklinux/etc/modprobe.d/blacklist-snd-asihpi.conf
+	mkdir -p debian/hpklinux/usr/src/snd-asihpi-@ASIHPI_VERSION@
+	cp -a alsa-drv/* debian/hpklinux/usr/src/snd-asihpi-@ASIHPI_VERSION@/
+	sed -i '/SOURCE_DIR_NAME/d' debian/hpklinux/usr/src/snd-asihpi-@ASIHPI_VERSION@/dkms.conf
+	sed -i 's|/kernel/sound/pci/asihpi|/updates/dkms|' debian/hpklinux/usr/src/snd-asihpi-@ASIHPI_VERSION@/dkms.conf
 	mkdir -p debian/hpklinux/lib/systemd/system
 	cp debian/hpklinux.service debian/hpklinux/lib/systemd/system/
 	mkdir -p debian/hpklinux/usr/share/doc/hpklinux

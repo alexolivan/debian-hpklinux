@@ -1,8 +1,16 @@
+hpklinux (4.20.54-1) stable; urgency=medium
+
+* Updated upstream to 4.20.54.
+  * Added native dual DKMS support for HPI and ALSA (snd-asihpi).
+  * Removed snd-asihpi blacklist to allow automatic loading.
+
+ -- Alex Olivan <alejandro.olivan.alvarez@gmailn.com>  Thu, 11 Jun 2026 18:50:00 +0200
+
 hpklinux (4.20.46-1) stable; urgency=medium
 
   * Updated for 4.20.46.
 
- -- Fred Gleason <fredg@paravelsystems.com>  Mon,22 July 2024 09:34:00 -0400
+ -- Fred Gleason <fredg@paravelsystems.com>  Mon, 22 Jul 2024 09:34:00 -0400
 
 hpklinux (4.20.44-5) stable; urgency=medium
 
