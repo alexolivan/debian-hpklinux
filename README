@@ -1,9 +1,0 @@
-This repo contains scripts for DEB packaging for the AudioScience HPI driver.
-Actual script systems live in branches with names of the form:
-
-hpi<version>
-
-where:
-  <version> - The version string of the target HPI driver --e.g. 4.20.43.
-
-The default 'master' branch contains nothing except this README file.
