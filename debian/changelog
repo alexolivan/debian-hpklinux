@@ -1,6 +1,6 @@
 hpklinux (4.20.54-1) stable; urgency=medium
 
-* Updated upstream to 4.20.54.
+  * Updated upstream to 4.20.54.
   * Added native dual DKMS support for HPI and ALSA (snd-asihpi).
   * Removed snd-asihpi blacklist to allow automatic loading.
 

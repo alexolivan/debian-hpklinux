@@ -15,8 +15,6 @@ tar -zvxf hpklinux_$ASIHPI_VERSION.tar.gz
 sed s/@ASIHPI_PKG_VERSION@/$ASIHPI_PKG_VERSION/ < debian/control.src > debian/control
 sed s/@ASIHPI_VERSION@/$ASIHPI_VERSION/ < debian/rules.src > debian/rules
 chmod 755 debian/rules
-sed s/@ASIHPI_VERSION@/$ASIHPI_VERSION/ < debian/load_asihpi.sh.in > debian/load_asihpi.sh
-chmod 755 debian/load_asihpi.sh
 sed s/@ASIHPI_VERSION@/$ASIHPI_VERSION/ < debian/prerm.src > debian/prerm.src2
 sed s/@ASIHPI_MAJOR_VERSION@/$ASIHPI_MAJOR_VERSION/ < debian/prerm.src2 > debian/prerm
 chmod 755 debian/prerm

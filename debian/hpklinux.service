@@ -1,11 +1,12 @@
+[Unit]
+Description=Load AudioScience HPI Driver (ALSA)
+After=local-fs.target
+ConditionDirectoryNotEmpty=/lib/firmware/asihpi
+
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/sbin/load_asihpi.sh
-
-[Unit]
-Description=AudioScience HPI Driver
-Before=rivendell.service
+ExecStart=-/sbin/modprobe snd-asihpi
 
 [Install]
 WantedBy=multi-user.target
