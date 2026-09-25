@@ -23,6 +23,7 @@ fi
 VERSION=""
 PKG_RELEASE="${DEFAULT_PKG_RELEASE:-1}"
 NON_INTERACTIVE=false
+AUTO_INSTALL=false
 KEEP_BUILD=false
 
 show_help() {
@@ -33,12 +34,14 @@ Argumentos:
   VERSION             Versión de AudioScience a compilar (por defecto: ${DEFAULT_ASIHPI_VERSION})
 
 Opciones:
+  -i, --install       Instala/actualiza automáticamente el paquete generado en el sistema tras compilar
   -y, --yes           Modo no interactivo; instala dependencias automáticamente sin preguntar
   -k, --keep-build    Conserva el directorio temporal build/ tras finalizar la compilación
   -h, --help          Muestra esta ayuda y finaliza
 
 Ejemplos:
   $0                  # Compila la versión por defecto (${DEFAULT_ASIHPI_VERSION})
+  $0 -i               # Compila e instala automáticamente el paquete resultante
   $0 4.20.54          # Compila la versión 4.20.54
   $0 -y               # Compila sin confirmaciones interactivas
 EOF
@@ -47,6 +50,10 @@ EOF
 # Procesar argumentos
 while [ "$#" -gt 0 ]; do
   case "$1" in
+    -i|--install)
+      AUTO_INSTALL=true
+      shift
+      ;;
     -y|--yes)
       NON_INTERACTIVE=true
       shift
@@ -245,13 +252,47 @@ if [ "$KEEP_BUILD" = false ]; then
   rm -rf "$BUILD_DIR"
 fi
 
-echo ""
-echo "======================================================================"
-echo " [✓] COMPILACIÓN FINALIZADA CON ÉXITO"
-echo "======================================================================"
-echo "Paquetes generados en: $DIST_DIR"
-ls -lh "$DIST_DIR"/*.deb
-echo ""
-echo "Para instalar en este sistema:"
-echo "  sudo apt install $DIST_DIR/hpklinux_${PKG_VERSION}_*.deb"
-echo "======================================================================"
+# ------------------------------------------------------------------------------
+# 6. Detección e instalación opcional del controlador en el sistema
+# ------------------------------------------------------------------------------
+DEB_PACKAGE_FILE="$(find "$DIST_DIR" -maxdepth 1 -name "hpklinux_${PKG_VERSION}_*.deb" | head -n 1)"
+
+if [ -n "$DEB_PACKAGE_FILE" ] && [ -f "$DEB_PACKAGE_FILE" ]; then
+  CURRENT_INSTALLED_VERSION="$(dpkg-query -W -f='${Version}' hpklinux 2>/dev/null || true)"
+
+  if [ -n "$CURRENT_INSTALLED_VERSION" ]; then
+    PROMPT_MSG="El paquete hpklinux está actualmente instalado en el sistema (versión actual: ${CURRENT_INSTALLED_VERSION}).\n¿Desea actualizarlo a la versión ${PKG_VERSION} ahora? [s/N]: "
+  else
+    PROMPT_MSG="¿Desea instalar el controlador recién generado (versión ${PKG_VERSION}) en este equipo ahora? [s/N]: "
+  fi
+
+  INSTALL_NOW=false
+  if [ "$AUTO_INSTALL" = true ]; then
+    INSTALL_NOW=true
+  elif [ "$NON_INTERACTIVE" = false ]; then
+    echo ""
+    read -r -p "$(printf "%b" "$PROMPT_MSG")" RESP_INSTALL
+    case "$RESP_INSTALL" in
+      [sS]|[sS][iI]|[yY]|[yY][eE][sS])
+        INSTALL_NOW=true
+        ;;
+    esac
+  fi
+
+  if [ "$INSTALL_NOW" = true ]; then
+    echo ""
+    echo "[-] Instalando $DEB_PACKAGE_FILE..."
+    if [ "$(id -u)" -eq 0 ]; then
+      apt-get install -y "$DEB_PACKAGE_FILE"
+    else
+      if command -v sudo >/dev/null 2>&1; then
+        sudo apt-get install -y "$DEB_PACKAGE_FILE"
+      else
+        echo "Error: Se requieren privilegios de root para instalar el paquete y 'sudo' no está disponible." >&2
+      fi
+    fi
+    echo ""
+    echo "[✓] Controlador instalado y configurado correctamente en el sistema."
+  fi
+fi
+

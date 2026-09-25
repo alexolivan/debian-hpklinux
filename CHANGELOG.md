@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Universal autonomous builder script (`build.sh`) supporting interactive or unattended dependency checking and installation on Debian.
+- Optional interactive prompt and `--install` / `-i` flag to automatically install or upgrade generated driver package on the host system.
 - Dynamic upstream tarball downloading on demand with local caching in `tarballs/`.
 - Compilation workspace isolation (`build/`) with clean packaging delivery in `dist/`.
 - Maintenance cleanup script (`clean.sh`).

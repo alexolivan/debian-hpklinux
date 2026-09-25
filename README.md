@@ -60,6 +60,13 @@ You can compile earlier or alternative versions without changing Git branches:
 ./build.sh 4.20.54
 ```
 
+### Automatic Post-Build Installation
+To automatically compile and install/upgrade the resulting package directly on the host system:
+
+```bash
+./build.sh -i
+```
+
 ### Unattended / Non-Interactive Builds
 For CI/CD pipelines or automated deployment scripts, pass the `-y` flag to bypass interactive prompts:
 
