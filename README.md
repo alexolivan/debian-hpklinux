@@ -33,12 +33,13 @@ cd debian-hpklinux
 2. Downloads the official AudioScience upstream source tarball on demand.
 3. Builds the Debian packages in an isolated directory.
 4. Delivers the ready-to-install packages into `./dist/`.
+5. Detects if `hpklinux` is already installed and prompts if you want to install/upgrade it immediately on the host system.
 
 ---
 
 ## Installation
 
-Once the build finishes, install the resulting Debian package:
+`build.sh` prompts to install the driver right after compiling. If you prefer to install manually or deploy the package to other machines:
 
 ```bash
 sudo apt install ./dist/hpklinux_4.20.56-1_amd64.deb
