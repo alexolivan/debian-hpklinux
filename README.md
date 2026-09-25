@@ -5,6 +5,14 @@ This repository provides native Debian packaging and DKMS support for AudioScien
 This is a **Hard Fork** strictly optimized for Debian-based systems (Tested on Trixie). 
 Legacy technical debt from CentOS/Ubuntu has been removed, delegating hardware initialization natively to the Linux kernel, udev, and systemd.
 
+> [!NOTE]
+> **Unified Architecture (No Version Branches Needed):**
+> Historically, each AudioScience version required maintaining and checking out a dedicated Git branch (e.g. `hpi4.20.44`, `hpi4.20.54`) with bundled binary tarballs.
+> The project now uses a unified continuous builder directly on `main`:
+> * A single clone builds any version (`./build.sh <version>`).
+> * Tarballs are fetched on demand and cached without inflating the Git repository.
+> * Versions are marked via Git tags (`v4.20.56-1`, etc.) rather than fragmented branches.
+
 ---
 
 ## Quick Start (Single-Command Build)
