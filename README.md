@@ -3,22 +3,71 @@
 This repository provides native Debian packaging and DKMS support for AudioScience audio cards (HPI and ALSA APIs).
 
 This is a **Hard Fork** strictly optimized for Debian-based systems (Tested on Trixie). 
-Some legacy technical debt from CentOS/Ubuntu has been removed, delegating hardware initialization natively to the Linux kernel, udev, and systemd.
+Legacy technical debt from CentOS/Ubuntu has been removed, delegating hardware initialization natively to the Linux kernel, udev, and systemd.
 
-## Branches and Available Versions
+---
 
-The driver source code does not reside in the main branch. Please switch to the branch matching the version you need to build:
+## Quick Start (Single-Command Build)
 
-* **hpi4.20.54** - Unified dual support (ALSA + HPI) with native loading.
+On a clean or minimal Debian installation (e.g. headless encoding server):
 
-## Build Instructions
+```bash
+# 1. Clone the repository
+git clone https://github.com/alexolivan/debian-hpklinux.git
+cd debian-hpklinux
 
-Step 1. Clone the repository pointing to the desired branch:
-git clone -b hpi4.20.54 https://github.com/alexolivan/debian-hpklinux.git
+# 2. Run the automated builder (defaults to 4.20.56)
+./build.sh
+```
 
-Step 2. Run the template orchestrator script:
-./prepare_build.sh
+`build.sh` automatically:
+1. Verifies system build dependencies (`build-essential`, `debhelper`, `dkms`, `linux-headers`, etc.). If any are missing, it will prompt for confirmation before installing them via `apt`.
+2. Downloads the official AudioScience upstream source tarball on demand.
+3. Builds the Debian packages in an isolated directory.
+4. Delivers the ready-to-install packages into `./dist/`.
 
-Step 3. Enter the generated directory and build the Debian package:
-cd hpklinux_4.20.54
-dpkg-buildpackage -us -uc -b
+---
+
+## Installation
+
+Once the build finishes, install the resulting Debian package:
+
+```bash
+sudo apt install ./dist/hpklinux_4.20.56-1_amd64.deb
+```
+
+The package will:
+* Register and build the `snd-asihpi` DKMS driver for your installed kernel(s).
+* Install the userspace HPI libraries and CLI utilities.
+* Enable and start the `hpklinux.service` systemd unit for hardware loading.
+
+---
+
+## Advanced Usage
+
+### Building a Specific AudioScience Version
+You can compile earlier or alternative versions without changing Git branches:
+
+```bash
+./build.sh 4.20.54
+```
+
+### Unattended / Non-Interactive Builds
+For CI/CD pipelines or automated deployment scripts, pass the `-y` flag to bypass interactive prompts:
+
+```bash
+./build.sh -y
+```
+
+### Cleaning Build Artifacts
+To clean compilation directories and generated `.deb` files:
+
+```bash
+./clean.sh
+```
+
+To also delete cached upstream tarballs:
+
+```bash
+./clean.sh --all
+```

@@ -1,0 +1,12 @@
+[Unit]
+Description=Load AudioScience HPI Driver (ALSA)
+After=local-fs.target
+ConditionDirectoryNotEmpty=/lib/firmware/asihpi
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/sbin/modprobe snd-asihpi
+
+[Install]
+WantedBy=multi-user.target

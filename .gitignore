@@ -1,0 +1,26 @@
+# Internal agent checkpoints & development scratch
+.agent/
+
+# Build and distribution directories
+build/
+dist/
+tarballs/
+hpklinux_*/
+
+# Debian packaging artifacts
+*.deb
+*.ddeb
+*.buildinfo
+*.changes
+*.dsc
+*.tar.gz
+*.orig.tar.gz
+*.debian.tar.xz
+
+# Generated files during build
+debian/control
+debian/rules
+debian/prerm
+debian/postinst
+debian/prerm.src2
+debian/postinst.src2
