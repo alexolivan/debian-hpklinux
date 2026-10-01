@@ -44,6 +44,7 @@ binary:	build
 		cp -a asi-python/audioscience/* debian/hpklinux/usr/lib/python3/dist-packages/audioscience/; \
 	fi
 	if [ -f asi-python/hpicontrol.py ]; then \
+		sed -i 's|\\ | |g' asi-python/hpicontrol.py; \
 		install -m 755 asi-python/hpicontrol.py debian/hpklinux/usr/bin/hpicontrol.py; \
 		ln -sf hpicontrol.py debian/hpklinux/usr/bin/hpicontrol; \
 	fi

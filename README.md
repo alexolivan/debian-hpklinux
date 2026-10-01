@@ -42,7 +42,7 @@ cd debian-hpklinux
 `build.sh` prompts to install the driver right after compiling. If you prefer to install manually or deploy the package to other machines:
 
 ```bash
-sudo apt install ./dist/hpklinux_4.20.56-2_amd64.deb
+sudo apt install ./dist/hpklinux_4.20.56-3_amd64.deb
 ```
 
 The package will:

@@ -1,3 +1,9 @@
+hpklinux (4.20.56-3) stable; urgency=medium
+
+  * Fix invalid escape sequences in hpicontrol.py for Python 3.12+ compatibility.
+
+ -- Alex Olivan <alejandro.olivan.alvarez@gmail.com>  Thu, 01 Oct 2026 16:26:25 +0200
+
 hpklinux (4.20.56-2) stable; urgency=medium
 
   * Added Python 3 bindings (audioscience.hpi) and CLI utilities (hpicontrol, hpisave, hpimixer).

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.20.56-3] - 2026-10-01
+
+### Fixed
+- Fixed invalid escape sequences (`\ `) in `hpicontrol.py` during packaging to eliminate `SyntaxWarning` on Python 3.12+ and prevent future `SyntaxError` on Python 3.14+.
+
 ## [4.20.56-2] - 2026-10-01
 
 ### Added

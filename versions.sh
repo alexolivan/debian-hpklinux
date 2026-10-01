@@ -3,7 +3,7 @@
 # AudioScience Debian Package Version Configuration (SSOT)
 #
 DEFAULT_ASIHPI_VERSION="4.20.56"
-DEFAULT_PKG_RELEASE="2"
+DEFAULT_PKG_RELEASE="3"
 
 # Obtiene la versión mayor.menor (ej. 4.20 a partir de 4.20.56)
 get_major_version() {
