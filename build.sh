@@ -106,6 +106,7 @@ REQUIRED_PACKAGES=(
   "linux-headers-$(uname -r)"
   "curl"
   "ca-certificates"
+  "python3"
 )
 
 MISSING_PACKAGES=()

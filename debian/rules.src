@@ -37,6 +37,24 @@ binary:	build
 	cp hpi-cli-apps/asihpi_si4688 debian/hpklinux/usr/bin/
 	cp hpi-cli-apps/asihpitest debian/hpklinux/usr/bin/
 	cp hpi-cli-apps/asihpitune debian/hpklinux/usr/bin/
+
+	# --- BINDINGS Y HERRAMIENTAS PYTHON (asi-python) ---
+	if [ -d asi-python/audioscience ]; then \
+		mkdir -p debian/hpklinux/usr/lib/python3/dist-packages/audioscience; \
+		cp -a asi-python/audioscience/* debian/hpklinux/usr/lib/python3/dist-packages/audioscience/; \
+	fi
+	if [ -f asi-python/hpicontrol.py ]; then \
+		install -m 755 asi-python/hpicontrol.py debian/hpklinux/usr/bin/hpicontrol.py; \
+		ln -sf hpicontrol.py debian/hpklinux/usr/bin/hpicontrol; \
+	fi
+	if [ -f asi-python/hpisave.py ]; then \
+		install -m 755 asi-python/hpisave.py debian/hpklinux/usr/bin/hpisave.py; \
+		ln -sf hpisave.py debian/hpklinux/usr/bin/hpisave; \
+	fi
+	if [ -f asi-python/hpimixer.py ]; then \
+		install -m 755 asi-python/hpimixer.py debian/hpklinux/usr/bin/hpimixer.py; \
+		ln -sf hpimixer.py debian/hpklinux/usr/bin/hpimixer; \
+	fi
 	
 	# --- INICIO BLOQUE DKMS SANEADO ---
 	mkdir -p debian/hpklinux/usr/src/snd-asihpi-@ASIHPI_VERSION@

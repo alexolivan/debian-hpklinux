@@ -42,12 +42,13 @@ cd debian-hpklinux
 `build.sh` prompts to install the driver right after compiling. If you prefer to install manually or deploy the package to other machines:
 
 ```bash
-sudo apt install ./dist/hpklinux_4.20.56-1_amd64.deb
+sudo apt install ./dist/hpklinux_4.20.56-2_amd64.deb
 ```
 
 The package will:
 * Register and build the `snd-asihpi` DKMS driver for your installed kernel(s).
-* Install the userspace HPI libraries and CLI utilities.
+* Install the userspace HPI libraries and C CLI utilities (`asihpitest`, `asi_firmware_updater`, etc.).
+* Install the official AudioScience Python 3 bindings (`audioscience.hpi`) and CLI tools (`hpicontrol`, `hpicontrol.py`, `hpisave`, `hpimixer`).
 * Enable and start the `hpklinux.service` systemd unit for hardware loading.
 
 ---

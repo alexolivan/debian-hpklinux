@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.20.56-2] - 2026-10-01
+
+### Added
+- Permanent packaging integration for official AudioScience Python bindings (`audioscience.hpi`) into `/usr/lib/python3/dist-packages/`.
+- Packaged CLI utilities (`hpicontrol.py`, `hpisave.py`, `hpimixer.py`) into `/usr/bin/` with convenience symlinks (`hpicontrol`, `hpisave`, `hpimixer`).
+- Added `python3` to package dependencies and `python3-tk` as suggestion.
+
 ## [4.20.56-1] - 2026-09-25
 
 ### Added

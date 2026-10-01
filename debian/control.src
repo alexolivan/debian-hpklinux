@@ -8,9 +8,12 @@ Homepage: https://audioscience.com
 
 Package: hpklinux
 Architecture: any
-Depends: ${shlibs:Depends}, dkms, linux-headers-amd64
-Description: HPI Driver for AudioScience Audio Adapters
+Depends: ${shlibs:Depends}, ${misc:Depends}, dkms, linux-headers-amd64, python3
+Suggests: python3-tk
+Description: HPI Driver and Python Tools for AudioScience Audio Adapters
  HPI driver for the AudioScience line of professional audio adapters.
+ Includes kernel DKMS driver, C and Python libraries (audioscience.hpi),
+ and CLI utilities (hpicontrol, hpisave).
 
 Package: hpklinux-dev
 Architecture: any

@@ -1,3 +1,10 @@
+hpklinux (4.20.56-2) stable; urgency=medium
+
+  * Added Python 3 bindings (audioscience.hpi) and CLI utilities (hpicontrol, hpisave, hpimixer).
+  * Added python3 dependency and python3-tk suggestion.
+
+ -- Alex Olivan <alejandro.olivan.alvarez@gmail.com>  Thu, 01 Oct 2026 15:51:56 +0200
+
 hpklinux (4.20.56-1) stable; urgency=medium
 
   * Updated upstream to 4.20.56.
